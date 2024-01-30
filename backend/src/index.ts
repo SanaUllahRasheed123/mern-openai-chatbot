@@ -1,4 +1,3 @@
-import { log } from 'console';
 import express from 'express';
 const app = express();
 
@@ -8,8 +7,8 @@ const app = express();
 //  POST -
 // DELETE
 app.use(express.json())
-app.get('/hello',(req,res,next)=>{
-  console.log(req.body.age);
+app.post('/new',(req,res,next)=>{
+  console.log(req.body.name);
   return res.send("Hello");
 
 })

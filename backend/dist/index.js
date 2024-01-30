@@ -5,8 +5,8 @@ const app = express();
 //  POST -
 // DELETE
 app.use(express.json());
-app.get('/hello', (req, res, next) => {
-    console.log(req.body.age);
+app.post('/new', (req, res, next) => {
+    console.log(req.body.name);
     return res.send("Hello");
 });
 app.listen(5000, () => console.log("Server Opened"));
