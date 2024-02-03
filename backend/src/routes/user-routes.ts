@@ -7,3 +7,5 @@ userRoutes.post('/signup',validate(signupValidator), userSignup);
 userRoutes.post('/login',validate(loginValidator), userLogin);
 
 export default userRoutes;
+
+//working 
