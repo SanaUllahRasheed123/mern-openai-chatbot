@@ -8,8 +8,6 @@ const Logo = () => {
     marginRight:'auto',
     alignItems:'center',
     gap:'15px',
-
-
     
     }}
     >
