@@ -6,4 +6,6 @@ userRoutes.get('/', getAllUsers);
 userRoutes.post('/signup', validate(signupValidator), userSignup);
 userRoutes.post('/login', validate(loginValidator), userLogin);
 export default userRoutes;
+//working 
+//Allah help me alot 
 //# sourceMappingURL=user-routes.js.map
