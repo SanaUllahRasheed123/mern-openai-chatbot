@@ -14,6 +14,7 @@ export const generateChatCompletion = async (
         return res.status(401).json({message:"User not registered OR Token malfunctioned"});
     //grab chats of user
     //send all chats with new one to openAI API
+    //get latest response
            
         
     }
