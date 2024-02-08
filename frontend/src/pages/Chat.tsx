@@ -1,6 +1,16 @@
 import { Avatar, Box, Button, Typography } from "@mui/material"
 import { useAuth } from "../context/AuthContext"
 import { red } from "@mui/material/colors";
+import ChatItems from "../components/chat/ChatItems";
+const chatMessages = [
+  { role: 'user', string: 'Hello', content: 'Hi there! How can I assist you today?' },
+  { role: 'assistant', string: 'Help', content: 'Sure, I can help. What do you need assistance with?' },
+  { role: 'user', string: 'Weather', content: 'What is the current weather like?' },
+  { role: 'assistant', string: 'Weather', content: 'I can provide you with the current weather. May I know your location?' },
+  { role: 'user', string: 'New York', content: 'I am in New York.' },
+  { role: 'assistant', string: 'Weather', content: 'The current weather in New York is 72°F with clear skies.' },
+  // Add more chat messages as needed
+];
 
 const Chat = () => {
   const auth = useAuth();
@@ -85,7 +95,7 @@ const Chat = () => {
           scrollBehavior:'smooth',
         }}
         >
-
+          {chatMessages.map((chat,index)=><ChatItems content={chat.content} role={chat.role} key={index}/>)}
         </Box>
 
       </Box>
