@@ -1,5 +1,6 @@
-import { Avatar, Box } from "@mui/material"
+import { Avatar, Box, Button, Typography } from "@mui/material"
 import { useAuth } from "../context/AuthContext"
+import { red } from "@mui/material/colors";
 
 const Chat = () => {
   const auth = useAuth();
@@ -15,7 +16,7 @@ const Chat = () => {
       gap:3,
     }}
     >
-      <Box sx={{display: {md:"flex",xs:'none',sm:'none'}}}>
+      <Box sx={{display: {md:"flex",xs:'none',sm:'none'},flex:0.2,flexDirection:'column',}}>
         <Box
         sx={{
           display:'flex',
@@ -39,7 +40,38 @@ const Chat = () => {
             {auth?.user?.name[0]}
             {auth?.user?.name.split(' ')[1][0]}
           </Avatar>
+          <Typography sx={{mx:'auto',fontFamily:'work sans'}}>
+              You are talking to a ChatBOT
+          </Typography>
+          <Typography sx={{mx:'auto',fontFamily:'work sans',my:4,p:3}}>
+            You can ask some questions related to Knowledge,Business,Advices,
+            Education,etc.But avoid sharing personal information.
+          </Typography>
+          <Button
+          sx={{
+            width:'200px',
+            my:'auto',
+            color:'white',
+            fontWeight:700,
+            borderRadius:3,
+            mx:'auto',
+            bgcolor:red[300],
+            ":hover":{
+            bgcolor:red.A400
+            }
+          }}
+          >
+            Clear Chat
+          </Button>
         </Box>
+      </Box>
+      <Box sx={{display:'flex',flex:{md:0.8,xs:1,sm:1},width:'100%'}}>
+        <Typography
+        sx={{fontSize:'40px',color:"white",mb:2,mx:'auto',}}>
+          Model - GPT 3.5 Turbo
+          
+        </Typography>
+
       </Box>
     </Box>
     </>
