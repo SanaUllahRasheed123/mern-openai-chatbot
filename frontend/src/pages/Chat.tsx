@@ -65,9 +65,9 @@ const Chat = () => {
           </Button>
         </Box>
       </Box>
-      <Box sx={{display:'flex',flex:{md:0.8,xs:1,sm:1},width:'100%'}}>
+      <Box sx={{display:'flex',flex:{md:0.8,xs:1,sm:1},flexDirection:'column',px:3}}>
         <Typography
-        sx={{fontSize:'40px',color:"white",mb:2,mx:'auto',}}>
+        sx={{fontSize:'40px',color:"white",mb:2,mx:'auto',fontWeight:"600",}}>
           Model - GPT 3.5 Turbo
           
         </Typography>
@@ -81,6 +81,7 @@ const Chat = () => {
           flexDirection:'column',
           overflow:'scroll',
           overflowX:'hidden',
+          overflowY:'auto',
           scrollBehavior:'smooth',
         }}
         >
