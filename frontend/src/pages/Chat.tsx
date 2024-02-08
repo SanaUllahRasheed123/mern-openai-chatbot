@@ -3,6 +3,7 @@ import { useAuth } from "../context/AuthContext"
 import { red } from "@mui/material/colors";
 import ChatItems from "../components/chat/ChatItems";
 import { IoMdSend } from "react-icons/io";
+import { useRef } from "react";
 const chatMessages = [
   { role: 'user', string: 'Hello', content: 'Hi there! How can I assist you today?' },
   { role: 'assistant', string: 'Help', content: 'Sure, I can help. What do you need assistance with?' },
@@ -14,7 +15,13 @@ const chatMessages = [
 ];
 
 const Chat = () => {
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const auth = useAuth();
+  const handleSubmit = async () =>{
+    console.log(inputRef.current?.value);
+    
+
+  }
   return (
     <>
     <Box
@@ -96,7 +103,9 @@ const Chat = () => {
           scrollBehavior:'smooth',
         }}
         >
-          {chatMessages.map((chat,index)=><ChatItems content={chat.content} role={chat.role} key={index}/>)}
+          {chatMessages.map((chat,index)=>(
+           
+          <ChatItems content={chat.content} role={chat.role} key={index}/>))}
         </Box>
         <div
         style={{
@@ -110,6 +119,7 @@ const Chat = () => {
         >
           {" "}
           <input
+          ref={inputRef}
           type="text"
           style={{
             width:'100%',
@@ -121,7 +131,7 @@ const Chat = () => {
             fontSize:'20px',
           }}
           />
-          <IconButton sx={{ml:'auto',color:'white'}}>
+          <IconButton onClick={handleSubmit} sx={{ml:'auto',color:'white'}}>
             <IoMdSend/>
           </IconButton>
         </div>
