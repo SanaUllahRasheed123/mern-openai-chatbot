@@ -3,24 +3,24 @@ import { useAuth } from "../context/AuthContext"
 import { red } from "@mui/material/colors";
 import ChatItems from "../components/chat/ChatItems";
 import { IoMdSend } from "react-icons/io";
-import { useRef } from "react";
-const chatMessages = [
-  { role: 'user', string: 'Hello', content: 'Hi there! How can I assist you today?' },
-  { role: 'assistant', string: 'Help', content: 'Sure, I can help. What do you need assistance with?' },
-  { role: 'user', string: 'Weather', content: 'What is the current weather like?' },
-  { role: 'assistant', string: 'Weather', content: 'I can provide you with the current weather. May I know your location?' },
-  { role: 'user', string: 'New York', content: 'I am in New York.' },
-  { role: 'assistant', string: 'Weather', content: 'The current weather in New York is 72°F with clear skies.' },
-  // Add more chat messages as needed
-];
+import { useRef, useState } from "react";
+
+type Message = {
+  role:'user' | 'assistant';
+  content:string;
+}
 
 const Chat = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const auth = useAuth();
+  const [chatMessages, setChatMessages] = useState<Message[]>([])
   const handleSubmit = async () =>{
-    console.log(inputRef.current?.value);
-    
-
+    const content = inputRef.current?.value as string;
+      if(inputRef && inputRef.current){
+        inputRef.current.value = '';
+      }
+      const newMessage:Message = {role:'user',content};
+      setChatMessages((prev)=>[...prev,newMessage])
   }
   return (
     <>
@@ -105,7 +105,9 @@ const Chat = () => {
         >
           {chatMessages.map((chat,index)=>(
            
-          <ChatItems content={chat.content} role={chat.role} key={index}/>))}
+          <ChatItems content={chat.content} role={chat.role} key={index}/>
+          
+          ))}
         </Box>
         <div
         style={{
